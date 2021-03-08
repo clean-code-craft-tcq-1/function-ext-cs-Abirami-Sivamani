@@ -37,6 +37,15 @@ namespace BatteryManagement
             if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
                 PrintHighBreachMessage(battery.MeasureName, battery.MessageLanguage);
         }
+        
+        static void PrintLowBreachMessage(string Measure, string MessageLanguage)
+        {
+            Console.WriteLine(Measure + " running towards low breach limit");
+        }
+        static void PrintHighBreachMessage(string Measure, string MessageLanguage)
+        {
+            Console.WriteLine(Measure + " running towards high breach limit");
+        }
 
         static void PrintMaximumLimitMessage(string Measure, float MaximumLimit, string MessageLanguage)
         {
