@@ -25,6 +25,14 @@ namespace BatteryManagement
 
             DisplayOutOfRangeMessage(battery.MeasureName);
         }
+        
+        public static void CheckBreaches(BatteryMeasureFactors battery)
+        {
+            if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue<(battery.MinimumLimit + battery.HighBreach)))
+                PrintLowBreachMessage(battery.MeasureName, battery.MessageLanguage);
+            if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
+                PrintHighBreachMessage(battery.MeasureName, battery.MessageLanguage);
+        }
 
         static void PrintMaximumLimitMessage(string Measure, float MaximumLimit, string MessageLanguage)
         {
@@ -50,7 +58,7 @@ namespace BatteryManagement
     
     class BatteryMeasureFactors
     {
-       public float MeasureValue, MaximumLimit, MinimumLimit;
+       public float MeasureValue, MaximumLimit, MinimumLimit, LowBreach, HighBreach;
        public string MeasureName, MessageLanguage;
         public BatteryMeasureFactors(string Name, float Value, float MaximumValue, float MinimumValue, string Language)
         {
@@ -59,6 +67,8 @@ namespace BatteryManagement
             this.MaximumLimit = MaximumValue;
             this.MinimumLimit = MinimumValue;
             this.MessageLanguage = Language;
+            this.LowBreach = (MinimumValue * 0.05f);
+            this.HighBreach = (MaximumValue * 0.05f);
         }
     }
 }
