@@ -12,11 +12,11 @@ namespace BatteryManagement
         /// <param name="soc">The soc.</param>
         /// <param name="chargeRate">The charge rate.</param>
         /// <returns></returns>
-        static bool batteryIsOk(BatteryMeasure measures)
+        static bool batteryIsOk(BatteryMeasure measures, string Language)
         {
-            bool TemperatureMeasureCheck = CheckTemperature(measures.Temperature);
-            bool ChargeStateMeasureCheck = CheckStateOfCharge(measures.StateOfCharge);
-            bool ChargeRateMeasureCheck = CheckChargeRate(measures.ChargeRate);
+            bool TemperatureMeasureCheck = CheckTemperature(measures.Temperature, Language);
+            bool ChargeStateMeasureCheck = CheckStateOfCharge(measures.StateOfCharge, Language);
+            bool ChargeRateMeasureCheck = CheckChargeRate(measures.ChargeRate, Language);
             return (TemperatureMeasureCheck && ChargeStateMeasureCheck && ChargeRateMeasureCheck);
         }
 
@@ -25,11 +25,11 @@ namespace BatteryManagement
         /// </summary>
         /// <param name="temperature">The temperature.</param>
         /// <returns></returns>
-        static bool CheckTemperature(float temperature)
+        static bool CheckTemperature(float temperature, string Language)
         {
             if (temperature < 0 || temperature > 45)
             {
-                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("Temperature", temperature, 45 ,0));
+                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("Temperature", temperature, 45 ,0,Language));
                 return false;
             }
             return true;
@@ -40,11 +40,11 @@ namespace BatteryManagement
         /// </summary>
         /// <param name="soc">The soc.</param>
         /// <returns></returns>
-        static bool CheckStateOfCharge(float soc)
+        static bool CheckStateOfCharge(float soc, string Language)
         {
             if (soc < 20 || soc > 80)
             {
-                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("State of Charge", soc, 20, 80));
+                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("State of Charge", soc, 20, 80, Language));
                 return false;
             }
             return true;
@@ -55,11 +55,11 @@ namespace BatteryManagement
         /// </summary>
         /// <param name="chargeRate">The charge rate.</param>
         /// <returns></returns>
-        static bool CheckChargeRate(float chargeRate)
+        static bool CheckChargeRate(float chargeRate, string Language)
         {
             if (chargeRate > 0.8)
             {
-                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("Charge Rate",chargeRate, 0.8f, 0.0f));
+                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("Charge Rate",chargeRate, 0.8f, 0.0f, Language));
                 return false;
             }
             return true;
@@ -84,10 +84,10 @@ namespace BatteryManagement
 
         static int Main()
         {
-            PassedBatteryMeasure(batteryIsOk(new BatteryMeasure(25,70,0.7f)));
-            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(60, 65, 0.6f)));
-            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(-50, 85, 0.2f)));
-            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(43, 10, 0.9f)));
+            PassedBatteryMeasure(batteryIsOk(new BatteryMeasure(25, 70, 0.7f), "English"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(60, 65, 0.6f), "German"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(-50, 85, 0.0f), "English"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(43, 10, 0.9f), "German"));
             Console.WriteLine("All ok");
             return 0;
         }
