@@ -31,7 +31,7 @@ namespace BatteryManagement
             PrintMessage(Message);
         }
     
-        public PrintMessage(string Message)
+        public static void PrintMessage(string Message)
         {
           Console.WriteLine(Message);
         }
