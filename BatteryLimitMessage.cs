@@ -19,12 +19,18 @@ namespace BatteryManagement
 
         public static void PrintMaximumLimitMessage(string Measure, float MaximumLimit, string MessageLanguage)
         {
+            if (MessageLanguage == "English")
                 Console.WriteLine(Measure + " has exceeded its Maximum Limit of " + MaximumLimit);
+            if (MessageLanguage == "German")
+                Console.WriteLine("Die " + Measure + " hat seine Höchstgrenze von " + MaximumLimit + " überschritten");
         }
 
         public static void PrintMinimumLimitMessage(string Measure, float MinimumLimit, string MessageLanguage)
         {
+            if (MessageLanguage == "English")
                 Console.WriteLine(Measure + " has fall behind its Minimum Limit of " + MinimumLimit);
+            if (MessageLanguage == "German")
+                Console.WriteLine("Die " + Measure + " ist unter seine Mindestgrenze von " + MinimumLimit + " gefallen");
         }
 
         public static void DisplayOutOfRangeMessage(string Measure)
