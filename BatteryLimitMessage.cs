@@ -35,10 +35,5 @@ namespace BatteryManagement
         {
           Console.WriteLine(Message);
         }
-
-        public static void DisplayOutOfRangeMessage(string Measure)
-        {
-            Console.WriteLine(Measure + " is out of range!");
-        }
   }
 }
