@@ -10,27 +10,30 @@ namespace BatteryManagement
   {
         public static void PrintLowBreachMessage(string Measure, string MessageLanguage)
         {
-            Console.WriteLine(Measure + " running towards low breach limit");
+           string Message = (MessageLanguage == "German") ? "Die "+ Measure +" läuft in Richtung ihrer unteren Bruchgrenze" : Measure + " running towards low breach limit";
+           PrintMessage(Message);
         }
         public static void PrintHighBreachMessage(string Measure, string MessageLanguage)
         {
-            Console.WriteLine(Measure + " running towards high breach limit");
+            string Message = (MessageLanguage == "German") ? "Die " + Measure + " läuft in Richtung ihrer oberen Bruchgrenze" : Measure + " running towards high breach limit";
+            PrintMessage(Message);
         }
 
         public static void PrintMaximumLimitMessage(string Measure, float MaximumLimit, string MessageLanguage)
         {
-            if (MessageLanguage == "English")
-                Console.WriteLine(Measure + " has exceeded its Maximum Limit of " + MaximumLimit);
-            if (MessageLanguage == "German")
-                Console.WriteLine("Die " + Measure + " hat seine Höchstgrenze von " + MaximumLimit + " überschritten");
+            string Message = (MessageLanguage == "German") ? "Die " + Measure + " hat seine Höchstgrenze von " + MaximumLimit + " überschritten" : Measure + " has exceeded its Maximum Limit of " + MaximumLimit;
+            PrintMessage(Message);
         }
 
         public static void PrintMinimumLimitMessage(string Measure, float MinimumLimit, string MessageLanguage)
         {
-            if (MessageLanguage == "English")
-                Console.WriteLine(Measure + " has fall behind its Minimum Limit of " + MinimumLimit);
-            if (MessageLanguage == "German")
-                Console.WriteLine("Die " + Measure + " ist unter seine Mindestgrenze von " + MinimumLimit + " gefallen");
+            string Message = (MessageLanguage == "German") ? "Die " + Measure + " ist unter seine Mindestgrenze von " + MinimumLimit + " gefallen" : Measure + " has fall behind its Minimum Limit of " + MinimumLimit;
+            PrintMessage(Message);
+        }
+    
+        public PrintMessage(string Message)
+        {
+          Console.WriteLine(Message);
         }
 
         public static void DisplayOutOfRangeMessage(string Measure)
