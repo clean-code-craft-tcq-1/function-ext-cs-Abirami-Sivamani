@@ -27,9 +27,12 @@ namespace BatteryManagement
         /// <returns></returns>
         static bool CheckTemperature(float temperature, string Language)
         {
+            BatteryMeasureFactors measures = new BatteryMeasureFactors("Temperature", temperature, 45, 0, Language);
+            BatteryMeasure.CheckLowBreach(measures);
+            BatteryMeasure.CheckHighBreach(measures);
             if (temperature < 0 || temperature > 45)
             {
-                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("Temperature", temperature, 45 ,0,Language));
+                BatteryMeasure.EvaluateBatteryMeasure(measures);
                 return false;
             }
             return true;
@@ -42,9 +45,12 @@ namespace BatteryManagement
         /// <returns></returns>
         static bool CheckStateOfCharge(float soc, string Language)
         {
+            BatteryMeasureFactors measures = new BatteryMeasureFactors("State of Charge", soc, 20, 80, Language);
+            BatteryMeasure.CheckLowBreach(measures);
+            BatteryMeasure.CheckHighBreach(measures);
             if (soc < 20 || soc > 80)
             {
-                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("State of Charge", soc, 20, 80, Language));
+                BatteryMeasure.EvaluateBatteryMeasure(measures);
                 return false;
             }
             return true;
@@ -57,9 +63,12 @@ namespace BatteryManagement
         /// <returns></returns>
         static bool CheckChargeRate(float chargeRate, string Language)
         {
+            BatteryMeasureFactors measures = new BatteryMeasureFactors("Charge Rate",chargeRate, 0.8f, 0.0f, Language);
+            BatteryMeasure.CheckLowBreach(measures);
+            BatteryMeasure.CheckHighBreach(measures);
             if (chargeRate > 0.8)
             {
-                BatteryMeasure.EvaluateBatteryMeasure(new BatteryMeasureFactors("Charge Rate",chargeRate, 0.8f, 0.0f, Language));
+                BatteryMeasure.EvaluateBatteryMeasure(measures);
                 return false;
             }
             return true;
