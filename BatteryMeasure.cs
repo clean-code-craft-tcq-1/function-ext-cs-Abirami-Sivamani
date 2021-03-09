@@ -26,17 +26,13 @@ namespace BatteryManagement
             DisplayOutOfRangeMessage(battery.MeasureName);
         }
         
-        public static void CheckLowBreach(BatteryMeasureFactors battery)
+        public static void CheckBreach(BatteryMeasureFactors battery)
         {
             if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue<(battery.MinimumLimit + battery.HighBreach)))
                 PrintLowBreachMessage(battery.MeasureName, battery.MessageLanguage);
-        }
-        
-        public static void CheckHighBreach(BatteryMeasureFactors battery)
-        {
             if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
                 PrintHighBreachMessage(battery.MeasureName, battery.MessageLanguage);
-        }
+        }    
         
         static void PrintLowBreachMessage(string Measure, string MessageLanguage)
         {
