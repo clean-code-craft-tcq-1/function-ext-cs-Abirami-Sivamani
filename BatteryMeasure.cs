@@ -19,43 +19,23 @@ namespace BatteryManagement
         public static void EvaluateBatteryMeasure(BatteryMeasureFactors battery)
         {
             if(battery.MeasureValue > battery.MaximumLimit)
-                PrintMaximumLimitMessage(battery.MeasureName, battery.MaximumLimit, battery.MessageLanguage);
+                BatteryLimitMessage.PrintMaximumLimitMessage(battery.MeasureName, battery.MaximumLimit, battery.MessageLanguage);
             if (battery.MeasureValue < battery.MinimumLimit)
-                PrintMinimumLimitMessage(battery.MeasureName, battery.MinimumLimit, battery.MessageLanguage);
+                BatteryLimitMessage.PrintMinimumLimitMessage(battery.MeasureName, battery.MinimumLimit, battery.MessageLanguage);
 
-            DisplayOutOfRangeMessage(battery.MeasureName);
+            BatteryLimitMessage.DisplayOutOfRangeMessage(battery.MeasureName);
         }
         
-        public static void CheckBreach(BatteryMeasureFactors battery)
+        public static void CheckLowBreach(BatteryMeasureFactors battery)
         {
             if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue<(battery.MinimumLimit + battery.HighBreach)))
-                PrintLowBreachMessage(battery.MeasureName, battery.MessageLanguage);
-            if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
-                PrintHighBreachMessage(battery.MeasureName, battery.MessageLanguage);
+                BatteryLimitMessage.PrintLowBreachMessage(battery.MeasureName, battery.MessageLanguage);
         }    
         
-        static void PrintLowBreachMessage(string Measure, string MessageLanguage)
+        public static void CheckHighBreach(BatteryMeasureFactors battery)
         {
-            Console.WriteLine(Measure + " running towards low breach limit");
-        }
-        static void PrintHighBreachMessage(string Measure, string MessageLanguage)
-        {
-            Console.WriteLine(Measure + " running towards high breach limit");
-        }
-
-        static void PrintMaximumLimitMessage(string Measure, float MaximumLimit, string MessageLanguage)
-        {
-                Console.WriteLine(Measure + " has exceeded its Maximum Limit of " + MaximumLimit);
-        }
-
-        static void PrintMinimumLimitMessage(string Measure, float MinimumLimit, string MessageLanguage)
-        {
-                Console.WriteLine(Measure + " has fall behind its Minimum Limit of " + MinimumLimit);
-        }
-
-        static void DisplayOutOfRangeMessage(string Measure)
-        {
-            Console.WriteLine(Measure + " is out of range!");
+             if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
+                BatteryLimitMessage.PrintHighBreachMessage(battery.MeasureName, battery.MessageLanguage);
         }
     }
     
