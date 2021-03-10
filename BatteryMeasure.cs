@@ -19,21 +19,21 @@ namespace BatteryManagement
         public static void EvaluateBatteryMeasure(BatteryMeasureFactors battery)
         {
             if(battery.MeasureValue > battery.MaximumLimit)
-                BatteryLimitMessage.PrintMaximumLimitMessage(battery.MeasureName, battery.MaximumLimit, battery.MessageLanguage);
+                BatteryLimitMessage.FormatMaximumLimitMessage(battery.MeasureName, battery.MaximumLimit, battery.MessageLanguage);
             if (battery.MeasureValue < battery.MinimumLimit)
-                BatteryLimitMessage.PrintMinimumLimitMessage(battery.MeasureName, battery.MinimumLimit, battery.MessageLanguage);
+                BatteryLimitMessage.FormatMinimumLimitMessage(battery.MeasureName, battery.MinimumLimit, battery.MessageLanguage);
         }
         
         public static void CheckLowBreach(BatteryMeasureFactors battery)
         {
             if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue<(battery.MinimumLimit + battery.HighBreach)))
-                BatteryLimitMessage.PrintLowBreachMessage(battery.MeasureName, battery.MessageLanguage);
+                BatteryLimitMessage.FormatLowBreachMessage(battery.MeasureName, battery.MessageLanguage);
         }    
         
         public static void CheckHighBreach(BatteryMeasureFactors battery)
         {
              if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
-                BatteryLimitMessage.PrintHighBreachMessage(battery.MeasureName, battery.MessageLanguage);
+                BatteryLimitMessage.FormatHighBreachMessage(battery.MeasureName, battery.MessageLanguage);
         }
     }
     
