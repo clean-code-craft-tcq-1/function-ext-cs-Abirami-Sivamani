@@ -97,6 +97,7 @@ namespace BatteryManagement
             FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(60, 65, 0.6f), "English"));
             FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(-50, 85, 0.0f), "English"));
             FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(43, 10, 0.9f), "English"));
+            PassedBatteryMeasure(batteryIsOk(new BatteryMeasure(43, 78, 0.7f), "English"));
             
             PassedBatteryMeasure(batteryIsOk(new BatteryMeasure(25, 70, 0.7f), "German"));
             FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(60, 65, 0.6f), "German"));
