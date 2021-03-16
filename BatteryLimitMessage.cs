@@ -8,7 +8,10 @@ namespace BatteryManagement
 {
   class BatteryLimitMessage 
   {
-        List<String> MeasureCrossedMaximum, MeasureCrossedMinimum, MeasureReachingLow, MeasureReachingHigh;
+        List<String> MeasureCrossedMaximum = new List<String>;
+        List<String> MeasureCrossedMinimum = new List<String>;
+        List<String> MeasureReachingLow = new List<String>;
+        List<String> MeasureReachingHigh = new List<String>;
         public static void FormatLowBreachMessage(string Measure, string MessageLanguage)
         {
            string Message = (MessageLanguage == "German") ? "Die "+ Measure +" läuft in Richtung ihrer unteren Bruchgrenze" : Measure + " running towards low breach limit";
