@@ -22,6 +22,8 @@ namespace BatteryManagement
                 BatteryLimitMessage.FormatMaximumLimitMessage(battery.MeasureName, battery.MaximumLimit, battery.MessageLanguage);
             if (battery.MeasureValue < battery.MinimumLimit)
                 BatteryLimitMessage.FormatMinimumLimitMessage(battery.MeasureName, battery.MinimumLimit, battery.MessageLanguage);
+            
+            BatteryLimitMessage.PrintConsolidatedReport();
         }
         
         public static void CheckLowBreach(BatteryMeasureFactors battery)
