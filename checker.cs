@@ -17,6 +17,7 @@ namespace BatteryManagement
             bool TemperatureMeasureCheck = CheckTemperature(measures.Temperature, Language);
             bool ChargeStateMeasureCheck = CheckStateOfCharge(measures.StateOfCharge, Language);
             bool ChargeRateMeasureCheck = CheckChargeRate(measures.ChargeRate, Language);
+            BatteryLimitMessage.PrintConsolidatedReport();
             return (TemperatureMeasureCheck && ChargeStateMeasureCheck && ChargeRateMeasureCheck);
         }
 
