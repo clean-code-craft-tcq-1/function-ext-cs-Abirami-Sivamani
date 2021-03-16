@@ -52,6 +52,14 @@ namespace BatteryManagement
          
         Console.WriteLine(MaxCount + ". " + MeasureCrossedMaximum[MaxCount]);
       }
+      
+      for(int MinCount= 1 ; MinCount <= MeasureCrossedMinimum.Count; MinCount++)
+      {
+        if(MinCount == 1)
+          Console.WriteLine("Below are the Battery Measures that fall behind Minimum Limit");
+         
+        Console.WriteLine(MinCount + ". " + MeasureCrossedMinimum[MinCount]);
+      }
     }
   }
 }
