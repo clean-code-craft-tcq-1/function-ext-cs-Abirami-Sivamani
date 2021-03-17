@@ -19,21 +19,21 @@ namespace BatteryManagement
         public static void EvaluateBatteryMeasure(BatteryMeasureFactors battery)
         {
             if(battery.MeasureValue > battery.MaximumLimit)
-                BatteryLimitMessage.FormatMaximumLimitMessage(battery.MeasureName, battery.MaximumLimit, battery.MessageLanguage);
+                BatteryLimitMessage.MeasureCrossedMaximum.Add(battery.MeasureName);
             if (battery.MeasureValue < battery.MinimumLimit)
-                BatteryLimitMessage.FormatMinimumLimitMessage(battery.MeasureName, battery.MinimumLimit, battery.MessageLanguage);
+                BatteryLimitMessage.MeasureCrossedMinimum.Add(battery.MeasureName);
         }
         
         public static void CheckLowBreach(BatteryMeasureFactors battery)
         {
             if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue<(battery.MinimumLimit + battery.HighBreach)))
-                BatteryLimitMessage.FormatLowBreachMessage(battery.MeasureName, battery.MessageLanguage);
+                BatteryLimitMessage.MeasureReachingLow(battery.MeasureName);
         }    
         
         public static void CheckHighBreach(BatteryMeasureFactors battery)
         {
              if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
-                BatteryLimitMessage.FormatHighBreachMessage(battery.MeasureName, battery.MessageLanguage);
+                BatteryLimitMessage.MeasureReachingHigh(battery.MeasureName);;
         }
     }
     
