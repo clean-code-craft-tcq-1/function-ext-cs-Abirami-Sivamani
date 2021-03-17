@@ -15,25 +15,30 @@ namespace BatteryManagement
     
       public static void PrintConsolidatedReport()
       {
-       		Console.WriteLine((MeasureCrossedMaximum.Count > 0)? "Below are the Battery Measures exceeds Maximum Limit"  : "None of the Battery Measures exceeds Maximum Limit");
-          MeasureCrossedMaximum.ToList().ForEach( MeasureName => {
-            Console.WriteLine(MeasureName);
-          });
-        
-          Console.WriteLine((MeasureCrossedMinimum.Count > 0)? "Below are the Battery Measures fall behind Minimum Limit"  : "None of the Battery Measures fall behind Minimum Limit");
-          MeasureCrossedMinimum.ToList().ForEach( MeasureName => {
-            Console.WriteLine(MeasureName);
-          });
-        
-          Console.WriteLine((MeasureReachingHigh.Count > 0)? "Below are the Battery Measures reaching towards behind Maximum Limit"  : "None of the Battery Measures reaching towards behind Maximum Limit");
-          MeasureReachingHigh.ToList().ForEach( MeasureName => {
-            Console.WriteLine(MeasureName);
-          });
-        
-         Console.WriteLine((MeasureReachingLow.Count > 0)? "Below are the Battery Measures reaching towards behind Minimum Limit"  : "None of the Battery Measures reaching towards behind Minimum Limit");
-          MeasureReachingLow.ToList().ForEach( MeasureName => {
-            Console.WriteLine(MeasureName);
-          });
+            PrintHeading(MeasureCrossedMaximum, "exceeds Maximum Limit");
+            MeasureCrossedMaximum.ToList().ForEach(MeasureName => {
+                Console.WriteLine(MeasureName);
+            });
+
+            PrintHeading(MeasureCrossedMinimum, "fall behind Minimum Limit");
+            MeasureCrossedMinimum.ToList().ForEach(MeasureName => {
+                Console.WriteLine(MeasureName);
+            });
+
+            PrintHeading(MeasureReachingHigh, "reaching towards Maximum Limit");
+            MeasureReachingHigh.ToList().ForEach(MeasureName => {
+                Console.WriteLine(MeasureName);
+            });
+
+            PrintHeading(MeasureReachingHigh, "reaching towards Maximum Limit");
+            MeasureReachingLow.ToList().ForEach(MeasureName => {
+                Console.WriteLine(MeasureName);
+            });
     }
+    
+        static void PrintHeading(List<String> Measures, string LimitText)
+        {
+            Console.WriteLine((Measures.Count > 0) ? "Below are the Battery Measures "+ LimitText : "None of the Battery Measures "+ LimitText);
+        }
   }
 }
