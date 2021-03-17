@@ -14,38 +14,30 @@ namespace BatteryManagement
             BatteryLimitMessage.PrintConsolidatedReport();
         }
 
-        static void CheckTemperature(float temperature, string Language)
+       static void CheckTemperature(float temperature, string Language)
         {
             BatteryMeasureFactors measures = new BatteryMeasureFactors("Temperature", temperature, 45, 0, Language);
-            CheckReachingBreaches(measures);
-            IsBatteryMeasurenOkay(measures);
+            IsBatteryMeasureOkay(measures);
         }
 
         static void CheckStateOfCharge(float soc, string Language)
         {
-            BatteryMeasureFactors measures = new BatteryMeasureFactors("State of Charge", soc, 20, 80, Language);
-            CheckReachingBreaches(measures);
-            IsBatteryMeasurenOkay(measures);
+            BatteryMeasureFactors measures = new BatteryMeasureFactors("State of Charge", soc, 80, 20, Language);
+            IsBatteryMeasureOkay(measures);
         }
 
         static void CheckChargeRate(float chargeRate, string Language)
         {
-            BatteryMeasureFactors measures = new BatteryMeasureFactors("Charge Rate",chargeRate, 0.8f, 0.0f, Language);
-            CheckReachingBreaches(measures);
-            IsBatteryMeasurenOkay(measures);
+            BatteryMeasureFactors measures = new BatteryMeasureFactors("Charge Rate", chargeRate, 0.8f, 0.0f, Language);
+            IsBatteryMeasureOkay(measures);
 
         }
 
-        static void CheckReachingBreaches(BatteryMeasureFactors measures)
+        static void IsBatteryMeasureOkay(BatteryMeasureFactors measures)
         {
             BatteryMeasure.CheckLowBreach(measures);
             BatteryMeasure.CheckHighBreach(measures);
-        }
-
-        static void IsBatteryMeasurenOkay(BatteryMeasureFactors measures)
-        {
-            if (measures.MeasureValue < measures.MinimumLimit || measures.MeasureValue > measures.MaximumLimit)
-                BatteryMeasure.EvaluateBatteryMeasure(measures);
+            BatteryMeasure.EvaluateBatteryMeasure(measures);
         }
 
         static int Main()
