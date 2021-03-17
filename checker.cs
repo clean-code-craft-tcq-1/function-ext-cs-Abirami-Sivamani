@@ -42,7 +42,7 @@ namespace BatteryManagement
             BatteryMeasure.CheckHighBreach(measures);
         }
 
-        static bool IsBatteryMeasurenOkay(BatteryMeasureFactors measures)
+        static void IsBatteryMeasurenOkay(BatteryMeasureFactors measures)
         {
             if (measures.MeasureValue < measures.MinimumLimit || measures.MeasureValue > measures.MaximumLimit)
                 BatteryMeasure.EvaluateBatteryMeasure(measures);
