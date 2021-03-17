@@ -35,7 +35,10 @@ namespace BatteryManagement
 
         static void TestBatteryMeasureState(BatteryMeasureFactors measures)
         {
-
+            BatteryMeasure.ReachingHigh(measures);
+            BatteryMeasure.ReachingLow(measures);
+            BatteryMeasure.CrossedMaximum(measures);
+            BatteryMeasure.CrossedMinimum(measures);
         }
 
         static int Main()
