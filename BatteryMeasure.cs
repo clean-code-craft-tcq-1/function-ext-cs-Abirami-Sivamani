@@ -14,6 +14,10 @@ namespace BatteryManagement
             this.Temperature = temperature;
             this.StateOfCharge = soc;
             this.ChargeRate = chargeRate;
+            BatteryLimitMessage.MeasureCrossedMaximum = new List<String>();
+            BatteryLimitMessage.MeasureCrossedMinimum = new List<String>();
+            BatteryLimitMessage.MeasureReachingHigh = new List<String>();
+            BatteryLimitMessage.MeasureReachingLow = new List<String>();
         }
 
         public static void EvaluateBatteryMeasure(BatteryMeasureFactors battery)
