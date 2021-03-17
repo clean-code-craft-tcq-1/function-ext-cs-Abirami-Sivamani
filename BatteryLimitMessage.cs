@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BatteryManagement
 {
-  class BatteryLimitMessage 
+  public class BatteryLimitMessage 
   {
         static List<String> MeasureCrossedMaximum = new List<String>();
         static List<String> MeasureCrossedMinimum = new List<String>();
