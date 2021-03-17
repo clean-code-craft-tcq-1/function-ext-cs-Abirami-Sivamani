@@ -11,6 +11,10 @@ namespace BatteryManagement
             CheckTemperature(measures.Temperature, Language);
             CheckStateOfCharge(measures.StateOfCharge, Language);
             CheckChargeRate(measures.ChargeRate, Language);
+            if(Language == "English")
+                BatteryLimitMessage.CreateConsolidatedReportEN();
+            else
+                BatteryLimitMessage.CreateConsolidatedReportDE();
         }
 
        static void CheckTemperature(float temperature, string Language)
@@ -47,6 +51,12 @@ namespace BatteryManagement
             IsBatteryOkay(new BatteryMeasure(-50, 85, 0.0f), "English");
             IsBatteryOkay(new BatteryMeasure(43, 10, 0.9f), "English");
             IsBatteryOkay(new BatteryMeasure(43, 78, 0.7f), "English");
+            
+            IsBatteryOkay(new BatteryMeasure(25, 70, 0.7f), "German");
+            IsBatteryOkay(new BatteryMeasure(60, 65, 0.6f), "German");
+            IsBatteryOkay(new BatteryMeasure(-50, 85, 0.0f), "German");
+            IsBatteryOkay(new BatteryMeasure(43, 10, 0.9f), "German");
+            IsBatteryOkay(new BatteryMeasure(43, 78, 0.7f), "German");
             return 0;
         }
     }
