@@ -17,27 +17,25 @@ namespace BatteryManagement
        static void CheckTemperature(float temperature, string Language)
         {
             BatteryMeasureFactors measures = new BatteryMeasureFactors("Temperature", temperature, 45, 0, Language);
-            IsBatteryMeasureOkay(measures);
+            TestBatteryMeasureState(measures);
         }
 
         static void CheckStateOfCharge(float soc, string Language)
         {
             BatteryMeasureFactors measures = new BatteryMeasureFactors("State of Charge", soc, 80, 20, Language);
-            IsBatteryMeasureOkay(measures);
+            TestBatteryMeasureState(measures);
         }
 
         static void CheckChargeRate(float chargeRate, string Language)
         {
             BatteryMeasureFactors measures = new BatteryMeasureFactors("Charge Rate", chargeRate, 0.8f, 0.0f, Language);
-            IsBatteryMeasureOkay(measures);
+            TestBatteryMeasureState(measures);
 
         }
 
-        static void IsBatteryMeasureOkay(BatteryMeasureFactors measures)
+        static void TestBatteryMeasureState(BatteryMeasureFactors measures)
         {
-            BatteryMeasure.CheckLowBreach(measures);
-            BatteryMeasure.CheckHighBreach(measures);
-            BatteryMeasure.EvaluateBatteryMeasure(measures);
+
         }
 
         static int Main()
