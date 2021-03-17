@@ -20,24 +20,28 @@ namespace BatteryManagement
             BatteryLimitMessage.MeasureReachingLow = new List<String>();
         }
 
-        public static void EvaluateBatteryMeasure(BatteryMeasureFactors battery)
+        public static void CrossedMaximum(BatteryMeasureFactors battery)
         {
-            if(battery.MeasureValue > battery.MaximumLimit)
+            if (battery.MeasureValue > battery.MaximumLimit)
                 BatteryLimitMessage.MeasureCrossedMaximum.Add(battery.MeasureName);
+        }
+
+        public static void CrossedMinimum(BatteryMeasureFactors battery)
+        {
             if (battery.MeasureValue < battery.MinimumLimit)
                 BatteryLimitMessage.MeasureCrossedMinimum.Add(battery.MeasureName);
         }
-        
-        public static void CheckLowBreach(BatteryMeasureFactors battery)
+
+        public static void ReachingLow(BatteryMeasureFactors battery)
         {
-            if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue<(battery.MinimumLimit + battery.HighBreach)))
+            if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue < (battery.MinimumLimit + battery.HighBreach)))
                 BatteryLimitMessage.MeasureReachingLow.Add(battery.MeasureName);
-        }    
-        
-        public static void CheckHighBreach(BatteryMeasureFactors battery)
+        }
+
+        public static void ReachingHigh(BatteryMeasureFactors battery)
         {
-             if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
-                BatteryLimitMessage.MeasureReachingHigh.Add(battery.MeasureName);;
+            if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue < battery.MaximumLimit))
+                BatteryLimitMessage.MeasureReachingHigh.Add(battery.MeasureName); ;
         }
     }
     
