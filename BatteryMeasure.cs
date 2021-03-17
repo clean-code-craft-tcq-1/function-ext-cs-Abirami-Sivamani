@@ -27,13 +27,13 @@ namespace BatteryManagement
         public static void CheckLowBreach(BatteryMeasureFactors battery)
         {
             if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue<(battery.MinimumLimit + battery.HighBreach)))
-                BatteryLimitMessage.MeasureReachingLow(battery.MeasureName);
+                BatteryLimitMessage.MeasureReachingLow.Add(battery.MeasureName);
         }    
         
         public static void CheckHighBreach(BatteryMeasureFactors battery)
         {
              if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue<battery.MaximumLimit))
-                BatteryLimitMessage.MeasureReachingHigh(battery.MeasureName);;
+                BatteryLimitMessage.MeasureReachingHigh.Add(battery.MeasureName);;
         }
     }
     
