@@ -15,11 +15,25 @@ namespace BatteryManagement
     
       public static void PrintConsolidatedReport()
       {
-        for(int MaxCount = 0 ; MaxCount < MeasureCrossedMaximum.Count; MaxCount++)
-        {
-          Console.WriteLine((MaxCount == 0) ? "Below are the Battery Measures that exceeds Maximum Limit" : "");      
-          Console.WriteLine((MaxCount+1) + ". " + MeasureCrossedMaximum[MaxCount]);
-        }
+       		Console.WriteLine((MeasureCrossedMaximum.Count > 1)? "Below are the Battery Measures exceeds Maximum Limit"  : "");
+          MeasureCrossedMaximum.ToList().ForEach( MeasureName => {
+            Console.WriteLine(MeasureName);
+          });
+        
+          Console.WriteLine((MeasureCrossedMinimum.Count > 1)? "Below are the Battery Measures fall behind Minimum Limit"  : "");
+          MeasureCrossedMinimum.ToList().ForEach( MeasureName => {
+            Console.WriteLine(MeasureName);
+          });
+        
+          Console.WriteLine((MeasureReachingHigh.Count > 1)? "Below are the Battery Measures reaching towards behind Maximum Limit"  : "");
+          MeasureReachingHigh.ToList().ForEach( MeasureName => {
+            Console.WriteLine(MeasureName);
+          });
+        
+         Console.WriteLine((MeasureReachingLow.Count > 1)? "Below are the Battery Measures reaching towards behind Minimum Limit"  : "");
+          MeasureReachingLow.ToList().ForEach( MeasureName => {
+            Console.WriteLine(MeasureName);
+          });
     }
   }
 }
