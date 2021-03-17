@@ -13,33 +13,33 @@ namespace BatteryManagement
         public static List<String> MeasureReachingLow = new List<String>();
         public static List<String> MeasureReachingHigh = new List<String>();
     
-      public static void CreateConsolidatedReportEN()
+        public static void CreateConsolidatedReportDE()
         {
-            PrintHeadingEN(MeasureCrossedMaximum, "Höchstgrenze überschritten");
+            PrintHeadingDE(MeasureCrossedMaximum, "Höchstgrenze überschritten");
             PrintMeasureList(MeasureCrossedMaximum);
 
-            PrintHeadingEN(MeasureCrossedMinimum, "Mindestgrenze überschritten");
+            PrintHeadingDE(MeasureCrossedMinimum, "Mindestgrenze überschritten");
             PrintMeasureList(MeasureCrossedMinimum);
 
-            PrintHeadingEN(MeasureReachingHigh, "Erreichen der Höchstgrenze");
+            PrintHeadingDE(MeasureReachingHigh, "Erreichen der Höchstgrenze");
             PrintMeasureList(MeasureReachingHigh);
 
-            PrintHeadingEN(MeasureReachingLow, "Erreichen des Mindestlimits");
+            PrintHeadingDE(MeasureReachingLow, "Erreichen des Mindestlimits");
             PrintMeasureList(MeasureReachingLow);
         }
 
-        public static void CreateConsolidatedReportDE()
+        public static void CreateConsolidatedReportEN()
         {
-            PrintHeadingDE(MeasureCrossedMaximum, "crossed Maximum Limit");
+            PrintHeadingEN(MeasureCrossedMaximum, "crossed Maximum Limit");
             PrintMeasureList(MeasureCrossedMaximum);
 
-            PrintHeadingDE(MeasureCrossedMinimum, "crossed Minimum Limit");
+            PrintHeadingEN(MeasureCrossedMinimum, "crossed Minimum Limit");
             PrintMeasureList(MeasureCrossedMinimum);
 
-            PrintHeadingDE(MeasureReachingHigh, "reaching towards Maximum Limit");
+            PrintHeadingEN(MeasureReachingHigh, "reaching towards Maximum Limit");
             PrintMeasureList(MeasureReachingHigh);
 
-            PrintHeadingDE(MeasureReachingLow, "reaching towards Minimum Limit");
+            PrintHeadingEN(MeasureReachingLow, "reaching towards Minimum Limit");
             PrintMeasureList(MeasureReachingLow);
         }
 
