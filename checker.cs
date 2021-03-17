@@ -11,7 +11,6 @@ namespace BatteryManagement
             CheckTemperature(measures.Temperature, Language);
             CheckStateOfCharge(measures.StateOfCharge, Language);
             CheckChargeRate(measures.ChargeRate, Language);
-            BatteryLimitMessage.PrintConsolidatedReport();
         }
 
        static void CheckTemperature(float temperature, string Language)
