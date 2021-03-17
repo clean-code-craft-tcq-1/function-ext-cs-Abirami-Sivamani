@@ -13,27 +13,44 @@ namespace BatteryManagement
         public static List<String> MeasureReachingLow = new List<String>();
         public static List<String> MeasureReachingHigh = new List<String>();
     
-      public static void CreateConsolidatedReport(string Language)
+      public static void CreateConsolidatedReportEN()
         {
-            PrintHeading(MeasureCrossedMaximum, "crossed Maximum Limit", "Höchstgrenze überschritten", Language);
+            PrintHeadingEN(MeasureCrossedMaximum, "Höchstgrenze überschritten");
             PrintMeasureList(MeasureCrossedMaximum);
 
-            PrintHeading(MeasureCrossedMinimum, "crossed Minimum Limit", "Mindestgrenze überschritten", Language);
+            PrintHeadingEN(MeasureCrossedMinimum, "Mindestgrenze überschritten");
             PrintMeasureList(MeasureCrossedMinimum);
 
-            PrintHeading(MeasureReachingHigh, "reaching towards Maximum Limit", "Erreichen der Höchstgrenze", Language);
+            PrintHeadingEN(MeasureReachingHigh, "Erreichen der Höchstgrenze");
             PrintMeasureList(MeasureReachingHigh);
 
-            PrintHeading(MeasureReachingLow, "reaching towards Minimum Limit", "Erreichen des Mindestlimits", Language);
+            PrintHeadingEN(MeasureReachingLow, "Erreichen des Mindestlimits");
             PrintMeasureList(MeasureReachingLow);
         }
 
-        static void PrintHeading(List<String> Measures, string LimitTextEN, string LimitTextDE, string Language)
+        public static void CreateConsolidatedReportDE()
         {
-            if(Language == "English")
-                Console.WriteLine((Measures.Count > 0) ? "Below are the Battery Measures "+ LimitTextEN : "None of the Battery Measures "+ LimitTextEN);
-            else
-                Console.WriteLine((Measures.Count > 0) ? "Nachfolgend finden Sie die Batteriemaßnahmen " + LimitTextDE : "Keine der Batterien misst " + LimitTextDE);
+            PrintHeadingDE(MeasureCrossedMaximum, "crossed Maximum Limit");
+            PrintMeasureList(MeasureCrossedMaximum);
+
+            PrintHeadingDE(MeasureCrossedMinimum, "crossed Minimum Limit");
+            PrintMeasureList(MeasureCrossedMinimum);
+
+            PrintHeadingDE(MeasureReachingHigh, "reaching towards Maximum Limit");
+            PrintMeasureList(MeasureReachingHigh);
+
+            PrintHeadingDE(MeasureReachingLow, "reaching towards Minimum Limit");
+            PrintMeasureList(MeasureReachingLow);
+        }
+
+        static void PrintHeadingEN(List<String> Measures, string LimitText)
+        {
+            Console.WriteLine((Measures.Count > 0) ? "Below are the Battery Measures " + LimitText : "None of the Battery Measures " + LimitText);
+        }
+
+        static void PrintHeadingDE(List<String> Measures, string LimitText)
+        {     
+            Console.WriteLine((Measures.Count > 0) ? "Nachfolgend finden Sie die Batteriemaßnahmen " + LimitText : "Keine der Batterien misst " + LimitText);
         }
 
         static void PrintMeasureList(List<String> Measures)
