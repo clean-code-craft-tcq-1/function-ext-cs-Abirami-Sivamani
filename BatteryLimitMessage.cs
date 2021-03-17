@@ -30,7 +30,7 @@ namespace BatteryManagement
                 Console.WriteLine(MeasureName);
             });
 
-            PrintHeading(MeasureReachingHigh, "reaching towards Maximum Limit");
+            PrintHeading(MeasureReachingLow, "reaching towards Minimum Limit");
             MeasureReachingLow.ToList().ForEach(MeasureName => {
                 Console.WriteLine(MeasureName);
             });
