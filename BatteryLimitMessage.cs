@@ -13,32 +13,34 @@ namespace BatteryManagement
         public static List<String> MeasureReachingLow = new List<String>();
         public static List<String> MeasureReachingHigh = new List<String>();
     
-      public static void PrintConsolidatedReport()
-      {
-            PrintHeading(MeasureCrossedMaximum, "exceeds Maximum Limit");
-            MeasureCrossedMaximum.ToList().ForEach(MeasureName => {
-                Console.WriteLine(MeasureName);
-            });
-
-            PrintHeading(MeasureCrossedMinimum, "fall behind Minimum Limit");
-            MeasureCrossedMinimum.ToList().ForEach(MeasureName => {
-                Console.WriteLine(MeasureName);
-            });
-
-            PrintHeading(MeasureReachingHigh, "reaching towards Maximum Limit");
-            MeasureReachingHigh.ToList().ForEach(MeasureName => {
-                Console.WriteLine(MeasureName);
-            });
-
-            PrintHeading(MeasureReachingLow, "reaching towards Minimum Limit");
-            MeasureReachingLow.ToList().ForEach(MeasureName => {
-                Console.WriteLine(MeasureName);
-            });
-    }
-    
-        static void PrintHeading(List<String> Measures, string LimitText)
+      public static void CreateConsolidatedReport(string Language)
         {
-            Console.WriteLine((Measures.Count > 0) ? "Below are the Battery Measures "+ LimitText : "None of the Battery Measures "+ LimitText);
+            PrintHeading(MeasureCrossedMaximum, "crossed Maximum Limit", "Höchstgrenze überschritten", Language);
+            PrintMeasureList(MeasureCrossedMaximum);
+
+            PrintHeading(MeasureCrossedMinimum, "crossed Minimum Limit", "Mindestgrenze überschritten", Language);
+            PrintMeasureList(MeasureCrossedMinimum);
+
+            PrintHeading(MeasureReachingHigh, "reaching towards Maximum Limit", "Erreichen der Höchstgrenze", Language);
+            PrintMeasureList(MeasureReachingHigh);
+
+            PrintHeading(MeasureReachingLow, "reaching towards Minimum Limit", "Erreichen des Mindestlimits", Language);
+            PrintMeasureList(MeasureReachingLow);
+        }
+
+        static void PrintHeading(List<String> Measures, string LimitTextEN, string LimitTextDE, string Language)
+        {
+            if(Language == "English")
+                Console.WriteLine((Measures.Count > 0) ? "Below are the Battery Measures "+ LimitTextEN : "None of the Battery Measures "+ LimitTextEN);
+            else
+                Console.WriteLine((Measures.Count > 0) ? "Nachfolgend finden Sie die Batteriemaßnahmen " + LimitTextDE : "Keine der Batterien misst " + LimitTextDE);
+        }
+
+        static void PrintMeasureList(List<String> Measures)
+        {
+            Measures.ToList().ForEach(MeasureName => {
+                Console.WriteLine(MeasureName);
+            });
         }
   }
 }
