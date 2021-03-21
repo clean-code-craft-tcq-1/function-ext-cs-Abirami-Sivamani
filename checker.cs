@@ -6,7 +6,7 @@ namespace BatteryManagement
     class Checker
     {
 
-        static void IsBatteryOkay(BatteryMeasure measures, string Language)
+        static bool IsBatteryOkay(BatteryMeasure measures, string Language)
         {
             bool isTemperatureOkay = CheckTemperature(measures.Temperature, Language);
             bool isStateOfChargeOkay = CheckStateOfCharge(measures.StateOfCharge, Language);
