@@ -6,41 +6,36 @@ using System.Threading.Tasks;
 
 namespace BatteryManagement
 {
-  class BatteryLimitMessage 
-  {
-        public static List<String> MeasureCrossedMaximum = new List<String>();
-        public static List<String> MeasureCrossedMinimum = new List<String>();
-        public static List<String> MeasureReachingLow = new List<String>();
-        public static List<String> MeasureReachingHigh = new List<String>();
-    
+    class BatteryLimitMessage
+    {
         public static void CreateConsolidatedReportDE()
         {
-            PrintHeadingDE(MeasureCrossedMaximum, "Höchstgrenze überschritten");
-            PrintMeasureList(MeasureCrossedMaximum);
+            PrintHeadingDE(BatteryMeasure.MeasureCrossedMaximum, "Höchstgrenze überschritten");
+            PrintMeasureList(BatteryMeasure.MeasureCrossedMaximum);
 
-            PrintHeadingDE(MeasureCrossedMinimum, "Mindestgrenze überschritten");
-            PrintMeasureList(MeasureCrossedMinimum);
+            PrintHeadingDE(BatteryMeasure.MeasureCrossedMinimum, "Mindestgrenze überschritten");
+            PrintMeasureList(BatteryMeasure.MeasureCrossedMinimum);
 
-            PrintHeadingDE(MeasureReachingHigh, "Erreichen der Höchstgrenze");
-            PrintMeasureList(MeasureReachingHigh);
+            PrintHeadingDE(BatteryMeasure.MeasureReachingHigh, "Erreichen der Höchstgrenze");
+            PrintMeasureList(BatteryMeasure.MeasureReachingHigh);
 
-            PrintHeadingDE(MeasureReachingLow, "Erreichen des Mindestlimits");
-            PrintMeasureList(MeasureReachingLow);
+            PrintHeadingDE(BatteryMeasure.MeasureReachingLow, "Erreichen des Mindestlimits");
+            PrintMeasureList(BatteryMeasure.MeasureReachingLow);
         }
 
         public static void CreateConsolidatedReportEN()
         {
-            PrintHeadingEN(MeasureCrossedMaximum, "crossed Maximum Limit");
-            PrintMeasureList(MeasureCrossedMaximum);
+            PrintHeadingEN(BatteryMeasure.MeasureCrossedMaximum, "crossed Maximum Limit");
+            PrintMeasureList(BatteryMeasure.MeasureCrossedMaximum);
 
-            PrintHeadingEN(MeasureCrossedMinimum, "crossed Minimum Limit");
-            PrintMeasureList(MeasureCrossedMinimum);
+            PrintHeadingEN(BatteryMeasure.MeasureCrossedMinimum, "crossed Minimum Limit");
+            PrintMeasureList(BatteryMeasure.MeasureCrossedMinimum);
 
-            PrintHeadingEN(MeasureReachingHigh, "reaching towards Maximum Limit");
-            PrintMeasureList(MeasureReachingHigh);
+            PrintHeadingEN(BatteryMeasure.MeasureReachingHigh, "reaching towards Maximum Limit");
+            PrintMeasureList(BatteryMeasure.MeasureReachingHigh);
 
-            PrintHeadingEN(MeasureReachingLow, "reaching towards Minimum Limit");
-            PrintMeasureList(MeasureReachingLow);
+            PrintHeadingEN(BatteryMeasure.MeasureReachingLow, "reaching towards Minimum Limit");
+            PrintMeasureList(BatteryMeasure.MeasureReachingLow);
         }
 
         static void PrintHeadingEN(List<String> Measures, string LimitText)
@@ -59,5 +54,5 @@ namespace BatteryManagement
                 Console.WriteLine(MeasureName);
             });
         }
-  }
+    }
 }
