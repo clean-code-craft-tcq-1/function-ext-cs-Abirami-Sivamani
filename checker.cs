@@ -15,6 +15,7 @@ namespace BatteryManagement
                 BatteryLimitMessage.CreateConsolidatedReportEN();
             else
                 BatteryLimitMessage.CreateConsolidatedReportDE();
+            return (isTemperatureOkay && isStateOfChargeOkay && isChargeRateOkay);
         }
 
        static bool CheckTemperature(float temperature, string Language)
