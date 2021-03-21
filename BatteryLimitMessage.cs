@@ -8,7 +8,7 @@ namespace BatteryManagement
 {
     class BatteryLimitMessage
     {
-        public static void CreateConsolidatedReportDE()
+        public static void CallPrintMethodsForDE()
         {
             PrintHeadingDE(BatteryMeasure.MeasureCrossedMaximum, "Höchstgrenze überschritten");
             PrintMeasureList(BatteryMeasure.MeasureCrossedMaximum);
@@ -23,7 +23,7 @@ namespace BatteryManagement
             PrintMeasureList(BatteryMeasure.MeasureReachingLow);
         }
 
-        public static void CreateConsolidatedReportEN()
+        public static void CallPrintMethodsForEN()
         {
             PrintHeadingEN(BatteryMeasure.MeasureCrossedMaximum, "crossed Maximum Limit");
             PrintMeasureList(BatteryMeasure.MeasureCrossedMaximum);
