@@ -62,17 +62,17 @@ namespace BatteryManagement
 
         static int Main()
         {
-            IsBatteryOkay(new BatteryMeasure(25, 70, 0.7f), "English");
-            IsBatteryOkay(new BatteryMeasure(60, 65, 0.6f), "English");
-            IsBatteryOkay(new BatteryMeasure(-50, 85, 0.0f), "English");
-            IsBatteryOkay(new BatteryMeasure(43, 10, 0.9f), "English");
-            IsBatteryOkay(new BatteryMeasure(43, 78, 0.7f), "English");
+            PassedBatteryMeasure(batteryIsOk(new BatteryMeasure(25, 70, 0.7f), "English"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(60, 65, 0.6f), "English"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(-50, 85, 0.0f), "English"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(43, 10, 0.9f), "English"));
+            PassedBatteryMeasure(batteryIsOk(new BatteryMeasure(43, 78, 0.7f), "English"));
             
-            IsBatteryOkay(new BatteryMeasure(25, 70, 0.7f), "German");
-            IsBatteryOkay(new BatteryMeasure(60, 65, 0.6f), "German");
-            IsBatteryOkay(new BatteryMeasure(-50, 85, 0.0f), "German");
-            IsBatteryOkay(new BatteryMeasure(43, 10, 0.9f), "German");
-            IsBatteryOkay(new BatteryMeasure(43, 78, 0.7f), "German");
+            PassedBatteryMeasure(batteryIsOk(new BatteryMeasure(25, 70, 0.7f), "German"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(60, 65, 0.6f), "German"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(-50, 85, 0.0f), "German"));
+            FailedBatteryMeasure(batteryIsOk(new BatteryMeasure(43, 10, 0.9f), "German"));
+            PassedBatteryMeasure(batteryIsOk(new BatteryMeasure(43, 78, 0.7f), "German"));
             return 0;
         }
     }
