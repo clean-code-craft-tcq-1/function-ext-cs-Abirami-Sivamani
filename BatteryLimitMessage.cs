@@ -8,8 +8,9 @@ namespace BatteryManagement
 {
     class BatteryLimitMessage
     {
-        public static void CallPrintMethodsForDE()
+        public static void CallPrintMethods(string Language)
         {
+            if(Language == "German") {
             PrintHeadingDE(BatteryMeasure.MeasureCrossedMaximum, "Höchstgrenze überschritten");
             PrintMeasureList(BatteryMeasure.MeasureCrossedMaximum);
 
@@ -21,10 +22,9 @@ namespace BatteryManagement
 
             PrintHeadingDE(BatteryMeasure.MeasureReachingLow, "Erreichen des Mindestlimits");
             PrintMeasureList(BatteryMeasure.MeasureReachingLow);
-        }
-
-        public static void CallPrintMethodsForEN()
-        {
+            }
+            
+            if(Language == "English") {
             PrintHeadingEN(BatteryMeasure.MeasureCrossedMaximum, "crossed Maximum Limit");
             PrintMeasureList(BatteryMeasure.MeasureCrossedMaximum);
 
@@ -36,6 +36,7 @@ namespace BatteryManagement
 
             PrintHeadingEN(BatteryMeasure.MeasureReachingLow, "reaching towards Minimum Limit");
             PrintMeasureList(BatteryMeasure.MeasureReachingLow);
+            }
         }
 
         static void PrintHeadingEN(List<String> Measures, string LimitText)
