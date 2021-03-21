@@ -11,7 +11,7 @@ namespace BatteryManagement
             bool isTemperatureOkay = CheckTemperature(measures.Temperature, Language);
             bool isStateOfChargeOkay = CheckStateOfCharge(measures.StateOfCharge, Language);
             bool isChargeRateOkay = CheckChargeRate(measures.ChargeRate, Language);
-            BatteryLimitMessage.CallPrintMethods();
+            BatteryLimitMessage.CallPrintMethods(Language);
             return (isTemperatureOkay && isStateOfChargeOkay && isChargeRateOkay);
         }
 
