@@ -22,14 +22,20 @@ namespace BatteryManagement
 
         public static void CrossedMaximum(BatteryMeasureFactors battery)
         {
-            if (battery.MeasureValue > battery.MaximumLimit)
+            if (battery.MeasureValue > battery.MaximumLimit) {
                 BatteryLimitMessage.MeasureCrossedMaximum.Add(battery.MeasureName);
+                return false;
+            }
+            return true;
         }
 
         public static void CrossedMinimum(BatteryMeasureFactors battery)
         {
-            if (battery.MeasureValue < battery.MinimumLimit)
+            if (battery.MeasureValue < battery.MinimumLimit) {
                 BatteryLimitMessage.MeasureCrossedMinimum.Add(battery.MeasureName);
+                return false;
+            }
+            return true;
         }
 
         public static void ReachingLow(BatteryMeasureFactors battery)
