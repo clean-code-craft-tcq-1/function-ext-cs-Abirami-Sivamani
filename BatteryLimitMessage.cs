@@ -40,12 +40,12 @@ namespace BatteryManagement
 
         static void PrintHeadingEN(List<String> Measures, string LimitText)
         {
-            Console.WriteLine((Measures.Count > 0) ? "Below are the Battery Measures " + LimitText : "None of the Battery Measures " + LimitText);
+            Console.WriteLine("Below are the Battery Measures " + LimitText);
         }
 
         static void PrintHeadingDE(List<String> Measures, string LimitText)
         {     
-            Console.WriteLine((Measures.Count > 0) ? "Nachfolgend finden Sie die Batteriemaßnahmen " + LimitText : "Keine der Batterien misst " + LimitText);
+            Console.WriteLine("Nachfolgend finden Sie die Batteriemaßnahmen " + LimitText);
         }
 
         static void PrintMeasureList(List<String> Measures)
