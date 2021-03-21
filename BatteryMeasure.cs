@@ -20,7 +20,7 @@ namespace BatteryManagement
             BatteryLimitMessage.MeasureReachingLow = new List<String>();
         }
 
-        public static void CrossedMaximum(BatteryMeasureFactors battery)
+        public static bool CrossedMaximum(BatteryMeasureFactors battery)
         {
             if (battery.MeasureValue > battery.MaximumLimit) {
                 BatteryLimitMessage.MeasureCrossedMaximum.Add(battery.MeasureName);
@@ -29,7 +29,7 @@ namespace BatteryManagement
             return true;
         }
 
-        public static void CrossedMinimum(BatteryMeasureFactors battery)
+        public static bool CrossedMinimum(BatteryMeasureFactors battery)
         {
             if (battery.MeasureValue < battery.MinimumLimit) {
                 BatteryLimitMessage.MeasureCrossedMinimum.Add(battery.MeasureName);
