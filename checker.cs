@@ -43,6 +43,24 @@ namespace BatteryManagement
             BatteryMeasure.CrossedMaximum(measures);
             BatteryMeasure.CrossedMinimum(measures);
         }
+        
+        static void PassedBatteryMeasure(bool IsBatteryOk)
+        {
+            if (!IsBatteryOk)
+            {
+                Console.WriteLine("Expected true, but got false");
+                Environment.Exit(1);
+            }
+        }
+        
+        static void FailedBatteryMeasure(bool IsBatteryOk)
+        {
+            if (IsBatteryOk)
+            {
+                Console.WriteLine("Expected false, but got true");
+                Environment.Exit(1);
+            }
+        }
 
         static int Main()
         {
