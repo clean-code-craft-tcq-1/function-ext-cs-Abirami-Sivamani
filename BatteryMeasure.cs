@@ -9,21 +9,23 @@ namespace BatteryManagement
     class BatteryMeasure
     {
         public float Temperature, StateOfCharge, ChargeRate;
+        public static List<String> MeasureCrossedMaximum, MeasureCrossedMinimum, MeasureReachingLow, MeasureReachingHigh;
         public BatteryMeasure(float temperature, float soc, float chargeRate)
         {
             this.Temperature = temperature;
             this.StateOfCharge = soc;
             this.ChargeRate = chargeRate;
-            BatteryLimitMessage.MeasureCrossedMaximum = new List<String>();
-            BatteryLimitMessage.MeasureCrossedMinimum = new List<String>();
-            BatteryLimitMessage.MeasureReachingHigh = new List<String>();
-            BatteryLimitMessage.MeasureReachingLow = new List<String>();
+            MeasureCrossedMaximum = new List<String>();
+            MeasureCrossedMinimum = new List<String>();
+            MeasureReachingHigh = new List<String>();
+            MeasureReachingLow = new List<String>();
         }
 
         public static bool CrossedMaximum(BatteryMeasureFactors battery)
         {
-            if (battery.MeasureValue > battery.MaximumLimit) {
-                BatteryLimitMessage.MeasureCrossedMaximum.Add(battery.MeasureName);
+            if (battery.MeasureValue > battery.MaximumLimit)
+            {
+                MeasureCrossedMaximum.Add(battery.MeasureName);
                 return false;
             }
             return true;
@@ -31,8 +33,9 @@ namespace BatteryManagement
 
         public static bool CrossedMinimum(BatteryMeasureFactors battery)
         {
-            if (battery.MeasureValue < battery.MinimumLimit) {
-                BatteryLimitMessage.MeasureCrossedMinimum.Add(battery.MeasureName);
+            if (battery.MeasureValue < battery.MinimumLimit)
+            {
+                MeasureCrossedMinimum.Add(battery.MeasureName);
                 return false;
             }
             return true;
@@ -41,20 +44,20 @@ namespace BatteryManagement
         public static void ReachingLow(BatteryMeasureFactors battery)
         {
             if ((battery.MeasureValue > (battery.MinimumLimit + battery.LowBreach)) && (battery.MeasureValue < (battery.MinimumLimit + battery.HighBreach)))
-                BatteryLimitMessage.MeasureReachingLow.Add(battery.MeasureName);
+                MeasureReachingLow.Add(battery.MeasureName);
         }
 
         public static void ReachingHigh(BatteryMeasureFactors battery)
         {
             if (((battery.MeasureValue > battery.MaximumLimit - battery.HighBreach)) && (battery.MeasureValue < battery.MaximumLimit))
-                BatteryLimitMessage.MeasureReachingHigh.Add(battery.MeasureName); ;
+                MeasureReachingHigh.Add(battery.MeasureName); ;
         }
     }
-    
+
     class BatteryMeasureFactors
     {
-       public float MeasureValue, MaximumLimit, MinimumLimit, LowBreach, HighBreach;
-       public string MeasureName, MessageLanguage;
+        public float MeasureValue, MaximumLimit, MinimumLimit, LowBreach, HighBreach;
+        public string MeasureName, MessageLanguage;
         public BatteryMeasureFactors(string Name, float Value, float MaximumValue, float MinimumValue, string Language)
         {
             this.MeasureName = Name;
